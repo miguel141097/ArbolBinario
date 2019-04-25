@@ -6,30 +6,21 @@
 
 function arbolBonito(arbol) {
 
-  //document.write("ANTES");
-  //document.write(arbol.left.left);
-  //document.write("HOLA MUNDO");
-
   //Condición de parada: No tiene hijos
   if( (arbol.left == null)&&(arbol.right == null) )
     return true;
 
-  document.write("DOS HIJOS \n");
   //Caso 1: Dos Hijos
   if( (arbol.left != null)&&(arbol.right != null)&&(arbol.value == arbol.left.value + arbol.right.value) )
-    return arbolBonito(arbol.left) * arbolBonito(arbol.right);
+    return arbolBonito(arbol.left) && arbolBonito(arbol.right);
 
-  document.write("HIJO DERECHO \n");
   //Caso 2: Solo hijo Derecho
   if( (arbol.left == null)&&(arbol.right != null)&&(arbol.value == arbol.right.value) )
     return arbolBonito(arbol.right);
 
-  document.write("HIJO IZQUIERDO \n");
   //Caso 3: Solo hijo Izquierdo
   if( (arbol.left != null)&&(arbol.right == null)&&(arbol.value == arbol.left.value) )
     return arbolBonito(arbol.left);
-
-  document.write("LLEGUE \n");
 
   return false;
 }
@@ -106,12 +97,7 @@ const arbolD = {
   right: null
 };
 
-//console.log(arbolBonito(arbolA)); // True
+console.log(arbolBonito(arbolA)); // True
 console.log(arbolBonito(arbolB)); // True
-if ( arbolBonito(arbolD) )
-  document.write("VERDADERO");
-else
-  document.write("FALSO");
-
-//console.log(arbolBonito(arbolC)); // False
-//console.log(arbolBonito(arbolD)); // True
+console.log(arbolBonito(arbolC)); // False
+console.log(arbolBonito(arbolD)); // True
